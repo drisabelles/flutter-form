@@ -26,9 +26,9 @@ Aplicação de formulário mobile desenvolvida com a finalidade de, até o momen
 </br>
 
 ## 🪢 Usabilidades <a name="usabilities"></a>
-- [X] Inserir dados
-- [X] Mostrar dados
-- [X] Sinalização de erro
+- [X] Atividade 01 - Conter campo para as informações de nome, endereço, número, complemento, uf e cep. Analisar se todas entradas foram informadas e mostrar as informações.
+- [ ] Atividade 02 - Adicionar Float Action Button (FAB) e mostrar as informações em outra página.
+
 
 <br />
 
