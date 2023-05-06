@@ -27,14 +27,18 @@ Aplicação de formulário mobile desenvolvida com a finalidade de, até o momen
 
 ## 🪢 Usabilidades <a name="usabilities"></a>
 - [X] Atividade 01 - Conter campo para as informações de nome, endereço, número, complemento, uf e cep. Analisar se todas entradas foram informadas e mostrar as informações.
-- [ ] Atividade 02 - Adicionar Float Action Button (FAB) e mostrar as informações em outra página.
+- [X] Atividade 02 - Adicionar Float Action Button (FAB) e mostrar as informações em outra página.
 
 
 <br />
 
 ## 🖼️ Screenshots <a name="screenshots"></a>
 
-Em breve.
+<div align="center">
+
+[hitpaw-1683338284017.webm](https://user-images.githubusercontent.com/79321198/236592480-06f5a7f5-5e5a-4879-afac-87be5d88e959.webm)
+
+</div>
 
 </br>
 
@@ -55,6 +59,12 @@ $ dart pub get
 $ flutter run
 
 ```
+
+</br>
+
+## 🌐 Link <a name="link"></a>
+
+Para não ter que executar os códigos e ver o que foi desenvolvido, <a href="https://zja406e9ja50.zapp.page/#/">você pode clicar aqui para acessar a aplicação</a>.
 
 </br>
 
