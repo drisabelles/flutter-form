@@ -13,7 +13,7 @@
 </div>
 
 ##  ✒️ Sobre o projeto <a name="project"></a>
-Aplicação de formulário mobile desenvolvida com a finalidade de, até o momento, realizar cadastro de nome, endereço, número, complemento, uf e cep.
+Aplicação desenvolvida com a intenção de praticar e aprimorar os conhecimentos de Flutter e Dart.
 
 </br>
 
