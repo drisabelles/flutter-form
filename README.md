@@ -73,11 +73,13 @@ Para não ter que executar os códigos e ver o que foi desenvolvido, <a href="ht
 ```bash
 📂 flutter-form
 |- 📁 android
-|- 📁 ios
 |- 📁 lib
+|--- 📁 components
+|----- 📄 customTextField.dart
+|--- 📁 screens
+|----- 📄 register.dart
+|----- 📄 profile.dart
 |--- 📄 main.dart
-|- 📁 linux
-|- 📁 macos
 |- 📁 test
 |- 📁 web
 |- 📁 windnows
