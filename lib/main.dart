@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:form/screens/register.dart';
+import 'package:flutter_app/screens/register.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Aplicativo da Isabelle',
-      theme: ThemeData(primarySwatch: Colors.teal),
+      theme: ThemeData(primarySwatch: Colors.purple),
       home: Register(),
     );
   }

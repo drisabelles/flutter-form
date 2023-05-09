@@ -100,15 +100,9 @@ class _RegisterState extends State<Register> {
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Profile(
-                                  nome: user.nome,
-                                  email: user.email,
-                                  endereco: user.endereco,
-                                  numero: user.numero,
-                                  complemento: user.complemento,
-                                  uf: user.uf,
-                                  cep: user.cep)));
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder:(context) => Profile(nome: user.nome, email: user.email, endereco: user.endereco, numero: user.numero, complemento: user.complemento, uf: user.uf, cep: user.cep)));
                         }
                       },
                       child: const Text('Cadastrar'),
