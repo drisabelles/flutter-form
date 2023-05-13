@@ -82,10 +82,7 @@ Para não ter que executar os códigos e ver o que foi desenvolvido, <a href="ht
 |--- 📄 main.dart
 |- 📁 test
 |- 📁 web
-|- 📁 windnows
-|- 📄 .gitignore
 |- 📄 .metadata
-|- 📄 analysis_options.yaml
 |- 📄 pubspec.lock
 |- 📄 pubspec.yaml
 ```
