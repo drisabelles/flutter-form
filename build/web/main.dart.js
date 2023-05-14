@@ -10,6 +10,7 @@ define('zapp_user_main', ['dart_sdk', 'flutter_sdk'], (function load__zapp_user_
   const js = dart_sdk.js;
   const ui = dart_sdk.ui;
   const _js_helper = dart_sdk._js_helper;
+  const math = dart_sdk.math;
   const convert = dart_sdk.convert;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
@@ -25,7 +26,12 @@ define('zapp_user_main', ['dart_sdk', 'flutter_sdk'], (function load__zapp_user_
   const single_child_scroll_view = flutter_sdk.src__widgets__single_child_scroll_view;
   const basic = flutter_sdk.src__widgets__basic;
   const edge_insets = flutter_sdk.src__painting__edge_insets;
+  const text_style = flutter_sdk.src__painting__text_style;
+  const text_input = flutter_sdk.src__services__text_input;
   const icons = flutter_sdk.src__material__icons;
+  const text_formatter = flutter_sdk.src__services__text_formatter;
+  const icon_button = flutter_sdk.src__material__icon_button;
+  const icon = flutter_sdk.src__widgets__icon;
   const elevated_button = flutter_sdk.src__material__elevated_button;
   const navigator = flutter_sdk.src__widgets__navigator;
   const page = flutter_sdk.src__material__page;
@@ -33,40 +39,49 @@ define('zapp_user_main', ['dart_sdk', 'flutter_sdk'], (function load__zapp_user_
   const input_decorator = flutter_sdk.src__material__input_decorator;
   const input_border = flutter_sdk.src__material__input_border;
   const border_radius = flutter_sdk.src__painting__border_radius;
-  const icon = flutter_sdk.src__widgets__icon;
   const icon_data = flutter_sdk.src__widgets__icon_data;
   const flex = flutter_sdk.src__rendering__flex;
-  const text_style = flutter_sdk.src__painting__text_style;
+  const text_editing = flutter_sdk.src__services__text_editing;
   var $46zapp_entry = Object.create(dart.library);
   var main = Object.create(dart.library);
   var web_plugin_registrant = Object.create(dart.library);
   var register = Object.create(dart.library);
-  var customTextField = Object.create(dart.library);
+  var custom_text_field = Object.create(dart.library);
   var profile = Object.create(dart.library);
   var string_validator = Object.create(dart.library);
+  var mask_text_input_formatter = Object.create(dart.library);
+  var user_model = Object.create(dart.library);
   var validator = Object.create(dart.library);
   var sanitizer = Object.create(dart.library);
   var helpers = Object.create(dart.library);
   var $toString = dartx.toString;
   var $isEmpty = dartx.isEmpty;
+  var $_get = dartx._get;
+  var $abs = dartx.abs;
   var $contains = dartx.contains;
+  var $substring = dartx.substring;
+  var $take = dartx.take;
+  var $toList = dartx.toList;
+  var $length = dartx.length;
+  var $keys = dartx.keys;
+  var $fold = dartx.fold;
+  var $removeRange = dartx.removeRange;
+  var $insert = dartx.insert;
+  var $removeAt = dartx.removeAt;
+  var $clear = dartx.clear;
+  var $join = dartx.join;
+  var $add = dartx.add;
   var $toLowerCase = dartx.toLowerCase;
   var $indexOf = dartx.indexOf;
   var $split = dartx.split;
-  var $length = dartx.length;
-  var $_get = dartx._get;
-  var $join = dartx.join;
   var $isNotEmpty = dartx.isNotEmpty;
   var $sort = dartx.sort;
   var $removeLast = dartx.removeLast;
   var $toUpperCase = dartx.toUpperCase;
   var $modulo = dartx['%'];
-  var $toList = dartx.toList;
   var $replaceAll = dartx.replaceAll;
-  var $substring = dartx.substring;
   var $toInt = dartx.toInt;
   var $_set = dartx._set;
-  var $removeAt = dartx.removeAt;
   var $putIfAbsent = dartx.putIfAbsent;
   var $forEach = dartx.forEach;
   dart._checkModuleNullSafetyMode(true);
@@ -81,16 +96,18 @@ define('zapp_user_main', ['dart_sdk', 'flutter_sdk'], (function load__zapp_user_
     ObjectAndStackTraceTovoid: () => (T.ObjectAndStackTraceTovoid = dart.constFn(dart.fnType(dart.void, [core.Object, core.StackTrace])))(),
     ZoneAndZoneDelegateAndZone__Tovoid: () => (T.ZoneAndZoneDelegateAndZone__Tovoid = dart.constFn(dart.fnType(dart.void, [async.Zone, async.ZoneDelegate, async.Zone, core.String])))(),
     GlobalKeyOfFormState: () => (T.GlobalKeyOfFormState = dart.constFn(framework.GlobalKey$(form.FormState)))(),
+    IdentityMapOfString$RegExp: () => (T.IdentityMapOfString$RegExp = dart.constFn(_js_helper.IdentityMap$(core.String, core.RegExp)))(),
     StringN: () => (T.StringN = dart.constFn(dart.nullable(core.String)))(),
     StringNToStringN: () => (T.StringNToStringN = dart.constFn(dart.fnType(T.StringN(), [T.StringN()])))(),
     StringNTovoid: () => (T.StringNTovoid = dart.constFn(dart.fnType(dart.void, [T.StringN()])))(),
+    JSArrayOfTextInputFormatter: () => (T.JSArrayOfTextInputFormatter = dart.constFn(_interceptors.JSArray$(text_formatter.TextInputFormatter)))(),
     BuildContextToProfile: () => (T.BuildContextToProfile = dart.constFn(dart.fnType(profile.Profile, [framework.BuildContext])))(),
     JSArrayOfWidget: () => (T.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))(),
+    intAndStringToint: () => (T.intAndStringToint = dart.constFn(dart.fnType(core.int, [core.int, core.String])))(),
     IdentityMapOfString$Object: () => (T.IdentityMapOfString$Object = dart.constFn(_js_helper.IdentityMap$(core.String, core.Object)))(),
     StringAndStringToint: () => (T.StringAndStringToint = dart.constFn(dart.fnType(core.int, [core.String, core.String])))(),
     IdentityMapOfString$bool: () => (T.IdentityMapOfString$bool = dart.constFn(_js_helper.IdentityMap$(core.String, core.bool)))(),
     JSArrayOfint: () => (T.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))(),
-    IdentityMapOfString$RegExp: () => (T.IdentityMapOfString$RegExp = dart.constFn(_js_helper.IdentityMap$(core.String, core.RegExp)))(),
     VoidToObject: () => (T.VoidToObject = dart.constFn(dart.fnType(core.Object, [])))(),
     StringAndObjectTovoid: () => (T.StringAndObjectTovoid = dart.constFn(dart.fnType(dart.void, [core.String, core.Object])))()
   };
@@ -149,6 +166,44 @@ define('zapp_user_main', ['dart_sdk', 'flutter_sdk'], (function load__zapp_user_
         [SizedBox_width]: null
       });
     },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: ui.FontWeight.prototype,
+        [FontWeight_value]: 500,
+        [FontWeight_index]: 4
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_overflow]: null,
+        [TextStyle_fontVariations]: null,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: null,
+        [TextStyle_decoration]: null,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_leadingDistribution]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: null,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: C[7] || CT.C7,
+        [TextStyle_fontSize]: 15,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: null,
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: null,
+        [TextStyle_inherit]: true
+      });
+    },
     get C5() {
       return C[5] = dart.const({
         __proto__: text.Text.prototype,
@@ -165,13 +220,13 @@ define('zapp_user_main', ['dart_sdk', 'flutter_sdk'], (function load__zapp_user_
         [Text_textDirection]: null,
         [Text_textAlign]: null,
         [Text_strutStyle]: null,
-        [Text_style]: null,
+        [Text_style]: C[6] || CT.C6,
         [Text_textSpan]: null,
         [Text_data]: "Cadastrar"
       });
     },
-    get C6() {
-      return C[6] = dart.const({
+    get C8() {
+      return C[8] = dart.const({
         __proto__: text.Text.prototype,
         [Widget_key]: null,
         [Text_selectionColor]: null,
@@ -186,18 +241,37 @@ define('zapp_user_main', ['dart_sdk', 'flutter_sdk'], (function load__zapp_user_
         [Text_textDirection]: null,
         [Text_textAlign]: null,
         [Text_strutStyle]: null,
-        [Text_style]: null,
+        [Text_style]: C[6] || CT.C6,
         [Text_textSpan]: null,
         [Text_data]: "Cancelar"
       });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: mask_text_input_formatter.MaskAutoCompletionType.prototype,
+        [_Enum__name]: "lazy",
+        [_Enum_index]: 0
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: mask_text_input_formatter.MaskAutoCompletionType.prototype,
+        [_Enum__name]: "eager",
+        [_Enum_index]: 1
+      });
+    },
+    get C9() {
+      return C[9] = dart.constList([C[10] || CT.C10, C[11] || CT.C11], mask_text_input_formatter.MaskAutoCompletionType);
     }
   }, false);
-  var C = Array(7).fill(void 0);
+  var C = Array(12).fill(void 0);
   var I = [
     "file:///zapp/project/lib/main.dart",
     "package:flutter_app/screens/register.dart",
-    "package:flutter_app/components/customTextField.dart",
+    "package:flutter_app/components/custom_text_field.dart",
     "package:flutter_app/screens/profile.dart",
+    "package:mask_text_input_formatter/mask_text_input_formatter.dart",
+    "package:flutter_app/models/user_model.dart",
     "file:///zapp/pub/.pub_cache/hosted/pub.dev/string_validator-1.0.0/lib/src/validator.dart"
   ];
   $46zapp_entry.runAppGuarded = function runAppGuarded() {
@@ -297,31 +371,129 @@ define('zapp_user_main', ['dart_sdk', 'flutter_sdk'], (function load__zapp_user_
   var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
   var SizedBox_height = dart.privateName(basic, "SizedBox.height");
   var SizedBox_width = dart.privateName(basic, "SizedBox.width");
+  var TextStyle_overflow = dart.privateName(text_style, "TextStyle.overflow");
+  var TextStyle_fontVariations = dart.privateName(text_style, "TextStyle.fontVariations");
+  var TextStyle_fontFeatures = dart.privateName(text_style, "TextStyle.fontFeatures");
+  var TextStyle_shadows = dart.privateName(text_style, "TextStyle.shadows");
+  var TextStyle_debugLabel = dart.privateName(text_style, "TextStyle.debugLabel");
+  var TextStyle_decorationThickness = dart.privateName(text_style, "TextStyle.decorationThickness");
+  var TextStyle_decorationStyle = dart.privateName(text_style, "TextStyle.decorationStyle");
+  var TextStyle_decorationColor = dart.privateName(text_style, "TextStyle.decorationColor");
+  var TextStyle_decoration = dart.privateName(text_style, "TextStyle.decoration");
+  var TextStyle_background = dart.privateName(text_style, "TextStyle.background");
+  var TextStyle_foreground = dart.privateName(text_style, "TextStyle.foreground");
+  var TextStyle_locale = dart.privateName(text_style, "TextStyle.locale");
+  var TextStyle_leadingDistribution = dart.privateName(text_style, "TextStyle.leadingDistribution");
+  var TextStyle_height = dart.privateName(text_style, "TextStyle.height");
+  var TextStyle_textBaseline = dart.privateName(text_style, "TextStyle.textBaseline");
+  var TextStyle_wordSpacing = dart.privateName(text_style, "TextStyle.wordSpacing");
+  var TextStyle_letterSpacing = dart.privateName(text_style, "TextStyle.letterSpacing");
+  var TextStyle_fontStyle = dart.privateName(text_style, "TextStyle.fontStyle");
+  var FontWeight_value = dart.privateName(ui, "FontWeight.value");
+  var FontWeight_index = dart.privateName(ui, "FontWeight.index");
+  var TextStyle_fontWeight = dart.privateName(text_style, "TextStyle.fontWeight");
+  var TextStyle_fontSize = dart.privateName(text_style, "TextStyle.fontSize");
+  var TextStyle__package = dart.privateName(text_style, "TextStyle._package");
+  var TextStyle__fontFamilyFallback = dart.privateName(text_style, "TextStyle._fontFamilyFallback");
+  var TextStyle_fontFamily = dart.privateName(text_style, "TextStyle.fontFamily");
+  var TextStyle_backgroundColor = dart.privateName(text_style, "TextStyle.backgroundColor");
+  var TextStyle_color = dart.privateName(text_style, "TextStyle.color");
+  var TextStyle_inherit = dart.privateName(text_style, "TextStyle.inherit");
   register._RegisterState = class _RegisterState extends framework.State$(register.Register) {
     build(context) {
-      return new scaffold.Scaffold.new({appBar: new app_bar.AppBar.new({title: C[1] || CT.C1}), body: new single_child_scroll_view.SingleChildScrollView.new({child: new form.Form.new({key: this.formKey, child: new basic.Padding.new({padding: C[2] || CT.C2, child: new basic.Column.new({children: T.JSArrayOfWidget().of([new customTextField.CustomTextField.new({label: "Nome", icon: icons.Icons.person, validator: dart.fn(text => text == null || text[$isEmpty] ? "Esse campo deve ser preenchido" : null, T.StringNToStringN()), onSaved: dart.fn(text => this.user = this.user.copyWith({nome: text}), T.StringNTovoid())}), C[3] || CT.C3, new customTextField.CustomTextField.new({label: "E-mail", icon: icons.Icons.mail, validator: dart.fn(text => {
+      return new scaffold.Scaffold.new({appBar: new app_bar.AppBar.new({title: C[1] || CT.C1}), body: new single_child_scroll_view.SingleChildScrollView.new({child: new form.Form.new({key: this.formKey, child: new basic.Padding.new({padding: C[2] || CT.C2, child: new basic.Column.new({children: T.JSArrayOfWidget().of([new text.Text.new("Dados Pessoais", {style: new text_style.TextStyle.new({fontSize: 18, fontWeight: ui.FontWeight.w500})}), C[3] || CT.C3, new custom_text_field.CustomTextField.new({keyboardType: text_input.TextInputType.text, obscureText: false, label: "Nome", hint: "Digite seu primeiro nome", icon: icons.Icons.person, validator: dart.fn(text => {
+                      if (text == null || text[$isEmpty]) {
+                        return "Esse campo deve ser preenchido";
+                      }
+                      if (!validator.isAlpha(text)) {
+                        return "Esse campo só pode conter letras";
+                      }
+                    }, T.StringNToStringN()), onSaved: dart.fn(text => this.user = this.user.copyWith({name: text}), T.StringNTovoid())}), C[3] || CT.C3, new custom_text_field.CustomTextField.new({keyboardType: text_input.TextInputType.text, obscureText: false, label: "Sobrenome", hint: "Digite o seu sobrenome", icon: icons.Icons.person, validator: dart.fn(text => {
+                      if (text == null || text[$isEmpty]) {
+                        return "Esse campo deve ser preenchido";
+                      }
+                      if (!validator.isAlpha(text)) {
+                        return "Esse campo só pode conter letras";
+                      }
+                    }, T.StringNToStringN()), onSaved: dart.fn(text => this.user = this.user.copyWith({surname: text}), T.StringNTovoid())}), C[3] || CT.C3, new custom_text_field.CustomTextField.new({inputFormatters: T.JSArrayOfTextInputFormatter().of([this.cpfFormatter]), keyboardType: text_input.TextInputType.text, obscureText: false, label: "CPF", hint: "Ex.: 999-999-999.99", icon: icons.Icons.credit_card, validator: dart.fn(text => {
+                      if (text == null || text[$isEmpty]) {
+                        return "Esse campo deve ser preenchido";
+                      }
+                    }, T.StringNToStringN()), onSaved: dart.fn(text => this.user = this.user.copyWith({cpf: text}), T.StringNTovoid())}), C[3] || CT.C3, new custom_text_field.CustomTextField.new({keyboardType: text_input.TextInputType.text, obscureText: false, label: "Email", hint: "Ex.: exemplo@email.com", icon: icons.Icons.mail, validator: dart.fn(text => {
                       if (text == null || text[$isEmpty]) {
                         return "Esse campo deve ser preenchido";
                       }
                       if (!validator.isEmail(text)) {
                         return "Formato inválido para e-mail";
                       }
-                    }, T.StringNToStringN()), onSaved: dart.fn(text => this.user = this.user.copyWith({email: text}), T.StringNTovoid())}), C[3] || CT.C3, new customTextField.CustomTextField.new({label: "Endereço", icon: icons.Icons.place, validator: dart.fn(text => text == null || text[$isEmpty] ? "Esse campo deve ser preenchido" : null, T.StringNToStringN()), onSaved: dart.fn(text => this.user = this.user.copyWith({endereco: text}), T.StringNTovoid())}), C[3] || CT.C3, new customTextField.CustomTextField.new({label: "Número", icon: icons.Icons.numbers, validator: dart.fn(text => text == null || text[$isEmpty] ? "Esse campo deve ser preenchido" : null, T.StringNToStringN()), onSaved: dart.fn(text => this.user = this.user.copyWith({numero: text}), T.StringNTovoid())}), C[3] || CT.C3, new customTextField.CustomTextField.new({label: "Complemento", icon: icons.Icons.location_city, validator: dart.fn(text => text == null || text[$isEmpty] ? "Esse campo deve ser preenchido" : null, T.StringNToStringN()), onSaved: dart.fn(text => this.user = this.user.copyWith({complemento: text}), T.StringNTovoid())}), C[3] || CT.C3, new customTextField.CustomTextField.new({label: "UF", icon: icons.Icons.map, validator: dart.fn(text => text == null || text[$isEmpty] ? "Esse campo deve ser preenchido" : null, T.StringNToStringN()), onSaved: dart.fn(text => this.user = this.user.copyWith({uf: text}), T.StringNTovoid())}), C[3] || CT.C3, new customTextField.CustomTextField.new({label: "CEP", icon: icons.Icons.numbers, validator: dart.fn(text => text == null || text[$isEmpty] ? "Esse campo deve ser preenchido" : null, T.StringNToStringN()), onSaved: dart.fn(text => this.user = this.user.copyWith({cep: text}), T.StringNTovoid())}), C[4] || CT.C4, new basic.SizedBox.new({width: 1 / 0, height: 50, child: new elevated_button.ElevatedButton.new({onPressed: dart.fn(() => {
+                    }, T.StringNToStringN()), onSaved: dart.fn(text => this.user = this.user.copyWith({email: text}), T.StringNTovoid())}), C[3] || CT.C3, new custom_text_field.CustomTextField.new({inputFormatters: T.JSArrayOfTextInputFormatter().of([this.phoneFormatter]), keyboardType: text_input.TextInputType.text, obscureText: false, label: "Celular", hint: "Ex.: (99) 99999-9999", icon: icons.Icons.phone, validator: dart.fn(text => {
+                      if (text == null || text[$isEmpty]) {
+                        return "Esse campo deve ser preenchido";
+                      }
+                    }, T.StringNToStringN()), onSaved: dart.fn(text => this.user = this.user.copyWith({phone: text}), T.StringNTovoid())}), C[3] || CT.C3, new custom_text_field.CustomTextField.new({keyboardType: text_input.TextInputType.text, obscureText: false, label: "Nome de usuário", hint: "Crie nome de usuário", icon: icons.Icons.person_outline, validator: dart.fn(text => {
+                      if (text == null || text[$isEmpty]) {
+                        return "Esse campo deve ser preenchido";
+                      }
+                    }, T.StringNToStringN()), onSaved: dart.fn(text => this.user = this.user.copyWith({username: text}), T.StringNTovoid())}), C[3] || CT.C3, new custom_text_field.CustomTextField.new({keyboardType: text_input.TextInputType.text, obscureText: this.obscuredText, label: "Senha", hint: "Crie uma senha forte", icon: icons.Icons.vpn_key, suffix: new icon_button.IconButton.new({onPressed: dart.fn(() => {
+                        this.setState(dart.fn(() => {
+                          this.obscuredText = !this.obscuredText;
+                        }, T.VoidTovoid()));
+                      }, T.VoidTovoid()), icon: new icon.Icon.new(this.obscuredText ? icons.Icons.visibility : icons.Icons.visibility_off)}), validator: dart.fn(text => {
+                      if (text == null || text[$isEmpty]) {
+                        return "Esse campo deve ser preenchido";
+                      }
+                      if (text.length < 8) {
+                        return "A sua senha precisa ter ao menos 8 caracteres";
+                      }
+                    }, T.StringNToStringN()), onSaved: dart.fn(text => this.user = this.user.copyWith({password: text}), T.StringNTovoid())}), C[4] || CT.C4, new text.Text.new("Dados Residenciais", {style: new text_style.TextStyle.new({fontSize: 18, fontWeight: ui.FontWeight.w500})}), C[3] || CT.C3, new custom_text_field.CustomTextField.new({keyboardType: text_input.TextInputType.text, obscureText: false, label: "Endereço", hint: "Ex.: Rua Fulano de Tal, Bairro Ciclano", icon: icons.Icons.place, validator: dart.fn(text => {
+                      if (text == null || text[$isEmpty]) {
+                        return "Esse campo deve ser preenchido";
+                      }
+                    }, T.StringNToStringN()), onSaved: dart.fn(text => this.user = this.user.copyWith({address: text}), T.StringNTovoid())}), C[3] || CT.C3, new custom_text_field.CustomTextField.new({keyboardType: text_input.TextInputType.number, obscureText: false, label: "Número", hint: "Ex.: 99", icon: icons.Icons.numbers, validator: dart.fn(text => {
+                      if (text == null || text[$isEmpty]) {
+                        return "Esse campo deve ser preenchido";
+                      }
+                      if (!validator.isNumeric(text)) {
+                        return "Esse campo só pode conter números";
+                      }
+                    }, T.StringNToStringN()), onSaved: dart.fn(text => this.user = this.user.copyWith({number: text}), T.StringNTovoid())}), C[3] || CT.C3, new custom_text_field.CustomTextField.new({keyboardType: text_input.TextInputType.text, obscureText: false, label: "Complemento", hint: "Ex.: Apto 150, bloco B", icon: icons.Icons.location_city, validator: dart.fn(text => {
+                      if (text == null || text[$isEmpty]) {
+                        return "Esse campo deve ser preenchido";
+                      }
+                    }, T.StringNToStringN()), onSaved: dart.fn(text => this.user = this.user.copyWith({address_complement: text}), T.StringNTovoid())}), C[3] || CT.C3, new custom_text_field.CustomTextField.new({keyboardType: text_input.TextInputType.text, obscureText: false, label: "UF", hint: "Ex.: SP", icon: icons.Icons.map, validator: dart.fn(text => {
+                      if (text == null || text[$isEmpty]) {
+                        return "Esse campo deve ser preenchido";
+                      }
+                      if (text.length < 2 || text.length > 2) {
+                        return "A sigla do estado deve conter 2 letras";
+                      }
+                      if (!validator.isAlpha(text)) {
+                        return "Esse campo só pode conter letras";
+                      }
+                    }, T.StringNToStringN()), onSaved: dart.fn(text => this.user = this.user.copyWith({uf: text}), T.StringNTovoid())}), C[3] || CT.C3, new custom_text_field.CustomTextField.new({keyboardType: text_input.TextInputType.number, inputFormatters: T.JSArrayOfTextInputFormatter().of([this.zipCodeFormatter]), obscureText: false, label: "CEP", hint: "Ex.: 99999-999", icon: icons.Icons.numbers, validator: dart.fn(text => {
+                      if (text == null || text[$isEmpty]) {
+                        return "Esse campo deve ser preenchido";
+                      }
+                    }, T.StringNToStringN()), onSaved: dart.fn(text => this.user = this.user.copyWith({zip_code: text}), T.StringNTovoid())}), C[4] || CT.C4, new basic.SizedBox.new({width: 300, height: 50, child: new elevated_button.ElevatedButton.new({onPressed: dart.fn(() => {
                         if (dart.nullCheck(this.formKey.currentState).validate()) {
                           dart.nullCheck(this.formKey.currentState).save();
-                          navigator.Navigator.of(context).push(dart.dynamic, new page.MaterialPageRoute.new({builder: dart.fn(context => new profile.Profile.new({nome: this.user.nome, email: this.user.email, endereco: this.user.endereco, numero: this.user.numero, complemento: this.user.complemento, uf: this.user.uf, cep: this.user.cep}), T.BuildContextToProfile())}));
+                          navigator.Navigator.of(context).push(dart.dynamic, new page.MaterialPageRoute.new({builder: dart.fn(context => new profile.Profile.new({name: this.user.name, surname: this.user.surname, cpf: this.user.cpf, email: this.user.email, phone: this.user.phone, username: this.user.username, password: this.user.password, address: this.user.address, number: this.user.number, address_complement: this.user.address_complement, uf: this.user.uf, zip_code: this.user.zip_code}), T.BuildContextToProfile())}));
                         }
-                      }, T.VoidTovoid()), child: C[5] || CT.C5})}), C[3] || CT.C3, new basic.SizedBox.new({width: 1 / 0, height: 50, child: new elevated_button.ElevatedButton.new({style: elevated_button.ElevatedButton.styleFrom({primary: colors.Colors.red}), onPressed: dart.fn(() => {
+                      }, T.VoidTovoid()), child: C[5] || CT.C5})}), C[3] || CT.C3, new basic.SizedBox.new({width: 300, height: 50, child: new elevated_button.ElevatedButton.new({style: elevated_button.ElevatedButton.styleFrom({primary: colors.Colors.red}), onPressed: dart.fn(() => {
                         dart.nullCheck(this.formKey.currentState).reset();
-                      }, T.VoidTovoid()), child: C[6] || CT.C6})})])})})})})});
+                      }, T.VoidTovoid()), child: C[8] || CT.C8})})])})})})})});
     }
     static ['_#new#tearOff']() {
       return new register._RegisterState.new();
     }
   };
   (register._RegisterState.new = function() {
-    this.user = new register.UserModel.new();
+    this.user = new user_model.UserModel.new();
     this.formKey = T.GlobalKeyOfFormState().new();
+    this.obscuredText = true;
+    this.cpfFormatter = new mask_text_input_formatter.MaskTextInputFormatter.new({mask: "###.###.###-##", filter: new (T.IdentityMapOfString$RegExp()).from(["#", core.RegExp.new("[0-9]")]), type: mask_text_input_formatter.MaskAutoCompletionType.lazy});
+    this.phoneFormatter = new mask_text_input_formatter.MaskTextInputFormatter.new({mask: "(##) #####-####", filter: new (T.IdentityMapOfString$RegExp()).from(["#", core.RegExp.new("[0-9]")]), type: mask_text_input_formatter.MaskAutoCompletionType.lazy});
+    this.zipCodeFormatter = new mask_text_input_formatter.MaskTextInputFormatter.new({mask: "#####-###", filter: new (T.IdentityMapOfString$RegExp()).from(["#", core.RegExp.new("[0-9]")]), type: mask_text_input_formatter.MaskAutoCompletionType.lazy});
     register._RegisterState.__proto__.new.call(this);
     ;
   }).prototype = register._RegisterState.prototype;
@@ -334,131 +506,64 @@ define('zapp_user_main', ['dart_sdk', 'flutter_sdk'], (function load__zapp_user_
   dart.setLibraryUri(register._RegisterState, I[1]);
   dart.setFieldSignature(register._RegisterState, () => ({
     __proto__: dart.getFields(register._RegisterState.__proto__),
-    user: dart.fieldType(register.UserModel),
-    formKey: dart.finalFieldType(framework.GlobalKey$(form.FormState))
+    user: dart.fieldType(user_model.UserModel),
+    formKey: dart.finalFieldType(framework.GlobalKey$(form.FormState)),
+    obscuredText: dart.fieldType(core.bool),
+    cpfFormatter: dart.fieldType(mask_text_input_formatter.MaskTextInputFormatter),
+    phoneFormatter: dart.fieldType(mask_text_input_formatter.MaskTextInputFormatter),
+    zipCodeFormatter: dart.fieldType(mask_text_input_formatter.MaskTextInputFormatter)
   }));
-  var nome$ = dart.privateName(register, "UserModel.nome");
-  var email$ = dart.privateName(register, "UserModel.email");
-  var endereco$ = dart.privateName(register, "UserModel.endereco");
-  var numero$ = dart.privateName(register, "UserModel.numero");
-  var complemento$ = dart.privateName(register, "UserModel.complemento");
-  var uf$ = dart.privateName(register, "UserModel.uf");
-  var cep$ = dart.privateName(register, "UserModel.cep");
-  register.UserModel = class UserModel extends core.Object {
-    get nome() {
-      return this[nome$];
+  var inputFormatters$ = dart.privateName(custom_text_field, "CustomTextField.inputFormatters");
+  var keyboardType$ = dart.privateName(custom_text_field, "CustomTextField.keyboardType");
+  var obscureText$ = dart.privateName(custom_text_field, "CustomTextField.obscureText");
+  var label$ = dart.privateName(custom_text_field, "CustomTextField.label");
+  var hint$ = dart.privateName(custom_text_field, "CustomTextField.hint");
+  var icon$ = dart.privateName(custom_text_field, "CustomTextField.icon");
+  var suffix$ = dart.privateName(custom_text_field, "CustomTextField.suffix");
+  var validator$ = dart.privateName(custom_text_field, "CustomTextField.validator");
+  var onSaved$ = dart.privateName(custom_text_field, "CustomTextField.onSaved");
+  custom_text_field.CustomTextField = class CustomTextField extends framework.StatelessWidget {
+    get inputFormatters() {
+      return this[inputFormatters$];
     }
-    set nome(value) {
-      super.nome = value;
+    set inputFormatters(value) {
+      super.inputFormatters = value;
     }
-    get email() {
-      return this[email$];
+    get keyboardType() {
+      return this[keyboardType$];
     }
-    set email(value) {
-      super.email = value;
+    set keyboardType(value) {
+      super.keyboardType = value;
     }
-    get endereco() {
-      return this[endereco$];
+    get obscureText() {
+      return this[obscureText$];
     }
-    set endereco(value) {
-      super.endereco = value;
+    set obscureText(value) {
+      super.obscureText = value;
     }
-    get numero() {
-      return this[numero$];
-    }
-    set numero(value) {
-      super.numero = value;
-    }
-    get complemento() {
-      return this[complemento$];
-    }
-    set complemento(value) {
-      super.complemento = value;
-    }
-    get uf() {
-      return this[uf$];
-    }
-    set uf(value) {
-      super.uf = value;
-    }
-    get cep() {
-      return this[cep$];
-    }
-    set cep(value) {
-      super.cep = value;
-    }
-    static ['_#new#tearOff'](opts) {
-      let nome = opts && 'nome' in opts ? opts.nome : "";
-      let email = opts && 'email' in opts ? opts.email : "";
-      let endereco = opts && 'endereco' in opts ? opts.endereco : "";
-      let numero = opts && 'numero' in opts ? opts.numero : "";
-      let complemento = opts && 'complemento' in opts ? opts.complemento : "";
-      let uf = opts && 'uf' in opts ? opts.uf : "";
-      let cep = opts && 'cep' in opts ? opts.cep : "";
-      return new register.UserModel.new({nome: nome, email: email, endereco: endereco, numero: numero, complemento: complemento, uf: uf, cep: cep});
-    }
-    copyWith(opts) {
-      let t0, t0$, t0$0, t0$1, t0$2, t0$3, t0$4;
-      let nome = opts && 'nome' in opts ? opts.nome : null;
-      let email = opts && 'email' in opts ? opts.email : null;
-      let endereco = opts && 'endereco' in opts ? opts.endereco : null;
-      let numero = opts && 'numero' in opts ? opts.numero : null;
-      let complemento = opts && 'complemento' in opts ? opts.complemento : null;
-      let uf = opts && 'uf' in opts ? opts.uf : null;
-      let cep = opts && 'cep' in opts ? opts.cep : null;
-      return new register.UserModel.new({nome: (t0 = nome, t0 == null ? this.nome : t0), email: (t0$ = email, t0$ == null ? this.email : t0$), endereco: (t0$0 = endereco, t0$0 == null ? this.endereco : t0$0), numero: (t0$1 = numero, t0$1 == null ? this.numero : t0$1), complemento: (t0$2 = complemento, t0$2 == null ? this.complemento : t0$2), uf: (t0$3 = uf, t0$3 == null ? this.uf : t0$3), cep: (t0$4 = cep, t0$4 == null ? this.cep : t0$4)});
-    }
-  };
-  (register.UserModel.new = function(opts) {
-    let nome = opts && 'nome' in opts ? opts.nome : "";
-    let email = opts && 'email' in opts ? opts.email : "";
-    let endereco = opts && 'endereco' in opts ? opts.endereco : "";
-    let numero = opts && 'numero' in opts ? opts.numero : "";
-    let complemento = opts && 'complemento' in opts ? opts.complemento : "";
-    let uf = opts && 'uf' in opts ? opts.uf : "";
-    let cep = opts && 'cep' in opts ? opts.cep : "";
-    this[nome$] = nome;
-    this[email$] = email;
-    this[endereco$] = endereco;
-    this[numero$] = numero;
-    this[complemento$] = complemento;
-    this[uf$] = uf;
-    this[cep$] = cep;
-    ;
-  }).prototype = register.UserModel.prototype;
-  dart.addTypeTests(register.UserModel);
-  dart.addTypeCaches(register.UserModel);
-  dart.setMethodSignature(register.UserModel, () => ({
-    __proto__: dart.getMethods(register.UserModel.__proto__),
-    copyWith: dart.fnType(register.UserModel, [], {cep: dart.nullable(core.String), complemento: dart.nullable(core.String), email: dart.nullable(core.String), endereco: dart.nullable(core.String), nome: dart.nullable(core.String), numero: dart.nullable(core.String), uf: dart.nullable(core.String)}, {})
-  }));
-  dart.setLibraryUri(register.UserModel, I[1]);
-  dart.setFieldSignature(register.UserModel, () => ({
-    __proto__: dart.getFields(register.UserModel.__proto__),
-    nome: dart.finalFieldType(core.String),
-    email: dart.finalFieldType(core.String),
-    endereco: dart.finalFieldType(core.String),
-    numero: dart.finalFieldType(core.String),
-    complemento: dart.finalFieldType(core.String),
-    uf: dart.finalFieldType(core.String),
-    cep: dart.finalFieldType(core.String)
-  }));
-  var label$ = dart.privateName(customTextField, "CustomTextField.label");
-  var icon$ = dart.privateName(customTextField, "CustomTextField.icon");
-  var validator$ = dart.privateName(customTextField, "CustomTextField.validator");
-  var onSaved$ = dart.privateName(customTextField, "CustomTextField.onSaved");
-  customTextField.CustomTextField = class CustomTextField extends framework.StatelessWidget {
     get label() {
       return this[label$];
     }
     set label(value) {
       super.label = value;
     }
+    get hint() {
+      return this[hint$];
+    }
+    set hint(value) {
+      super.hint = value;
+    }
     get icon() {
       return this[icon$];
     }
     set icon(value) {
       super.icon = value;
+    }
+    get suffix() {
+      return this[suffix$];
+    }
+    set suffix(value) {
+      super.suffix = value;
     }
     get validator() {
       return this[validator$];
@@ -474,122 +579,192 @@ define('zapp_user_main', ['dart_sdk', 'flutter_sdk'], (function load__zapp_user_
     }
     static ['_#new#tearOff'](opts) {
       let key = opts && 'key' in opts ? opts.key : null;
+      let inputFormatters = opts && 'inputFormatters' in opts ? opts.inputFormatters : null;
+      let keyboardType = opts && 'keyboardType' in opts ? opts.keyboardType : null;
+      let obscureText = opts && 'obscureText' in opts ? opts.obscureText : null;
       let label = opts && 'label' in opts ? opts.label : null;
+      let hint = opts && 'hint' in opts ? opts.hint : null;
       let icon = opts && 'icon' in opts ? opts.icon : null;
+      let suffix = opts && 'suffix' in opts ? opts.suffix : null;
       let validator = opts && 'validator' in opts ? opts.validator : null;
       let onSaved = opts && 'onSaved' in opts ? opts.onSaved : null;
-      return new customTextField.CustomTextField.new({key: key, label: label, icon: icon, validator: validator, onSaved: onSaved});
+      return new custom_text_field.CustomTextField.new({key: key, inputFormatters: inputFormatters, keyboardType: keyboardType, obscureText: obscureText, label: label, hint: hint, icon: icon, suffix: suffix, validator: validator, onSaved: onSaved});
     }
     build(context) {
-      return new text_form_field.TextFormField.new({validator: this.validator, onSaved: this.onSaved, decoration: new input_decorator.InputDecoration.new({labelText: this.label, hintText: "Digite o " + this.label, border: new input_border.OutlineInputBorder.new({borderRadius: new border_radius.BorderRadius.circular(5)}), prefixIcon: this.icon == null ? null : new icon.Icon.new(this.icon)})});
+      return new text_form_field.TextFormField.new({inputFormatters: this.inputFormatters, keyboardType: this.keyboardType, obscureText: this.obscureText, decoration: new input_decorator.InputDecoration.new({border: new input_border.OutlineInputBorder.new({borderRadius: new border_radius.BorderRadius.circular(5)}), labelText: this.label, hintText: this.hint, prefixIcon: this.icon == null ? null : new icon.Icon.new(this.icon), suffixIcon: this.suffix}), validator: this.validator, onSaved: this.onSaved});
     }
   };
-  (customTextField.CustomTextField.new = function(opts) {
+  (custom_text_field.CustomTextField.new = function(opts) {
     let key = opts && 'key' in opts ? opts.key : null;
+    let inputFormatters = opts && 'inputFormatters' in opts ? opts.inputFormatters : null;
+    let keyboardType = opts && 'keyboardType' in opts ? opts.keyboardType : null;
+    let obscureText = opts && 'obscureText' in opts ? opts.obscureText : null;
     let label = opts && 'label' in opts ? opts.label : null;
+    let hint = opts && 'hint' in opts ? opts.hint : null;
     let icon = opts && 'icon' in opts ? opts.icon : null;
+    let suffix = opts && 'suffix' in opts ? opts.suffix : null;
     let validator = opts && 'validator' in opts ? opts.validator : null;
     let onSaved = opts && 'onSaved' in opts ? opts.onSaved : null;
+    this[inputFormatters$] = inputFormatters;
+    this[keyboardType$] = keyboardType;
+    this[obscureText$] = obscureText;
     this[label$] = label;
+    this[hint$] = hint;
     this[icon$] = icon;
+    this[suffix$] = suffix;
     this[validator$] = validator;
     this[onSaved$] = onSaved;
-    customTextField.CustomTextField.__proto__.new.call(this, {key: key});
+    custom_text_field.CustomTextField.__proto__.new.call(this, {key: key});
     ;
-  }).prototype = customTextField.CustomTextField.prototype;
-  dart.addTypeTests(customTextField.CustomTextField);
-  dart.addTypeCaches(customTextField.CustomTextField);
-  dart.setMethodSignature(customTextField.CustomTextField, () => ({
-    __proto__: dart.getMethods(customTextField.CustomTextField.__proto__),
+  }).prototype = custom_text_field.CustomTextField.prototype;
+  dart.addTypeTests(custom_text_field.CustomTextField);
+  dart.addTypeCaches(custom_text_field.CustomTextField);
+  dart.setMethodSignature(custom_text_field.CustomTextField, () => ({
+    __proto__: dart.getMethods(custom_text_field.CustomTextField.__proto__),
     build: dart.fnType(framework.Widget, [framework.BuildContext])
   }));
-  dart.setLibraryUri(customTextField.CustomTextField, I[2]);
-  dart.setFieldSignature(customTextField.CustomTextField, () => ({
-    __proto__: dart.getFields(customTextField.CustomTextField.__proto__),
-    label: dart.finalFieldType(core.String),
+  dart.setLibraryUri(custom_text_field.CustomTextField, I[2]);
+  dart.setFieldSignature(custom_text_field.CustomTextField, () => ({
+    __proto__: dart.getFields(custom_text_field.CustomTextField.__proto__),
+    inputFormatters: dart.finalFieldType(dart.nullable(core.List$(text_formatter.TextInputFormatter))),
+    keyboardType: dart.finalFieldType(dart.nullable(text_input.TextInputType)),
+    obscureText: dart.finalFieldType(core.bool),
+    label: dart.finalFieldType(dart.nullable(core.String)),
+    hint: dart.finalFieldType(core.String),
     icon: dart.finalFieldType(dart.nullable(icon_data.IconData)),
+    suffix: dart.finalFieldType(dart.nullable(framework.Widget)),
     validator: dart.finalFieldType(dart.nullable(dart.fnType(dart.nullable(core.String), [dart.nullable(core.String)]))),
     onSaved: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [dart.nullable(core.String)])))
   }));
-  var nome$0 = dart.privateName(profile, "Profile.nome");
-  var email$0 = dart.privateName(profile, "Profile.email");
-  var endereco$0 = dart.privateName(profile, "Profile.endereco");
-  var numero$0 = dart.privateName(profile, "Profile.numero");
-  var complemento$0 = dart.privateName(profile, "Profile.complemento");
-  var uf$0 = dart.privateName(profile, "Profile.uf");
-  var cep$0 = dart.privateName(profile, "Profile.cep");
+  var name$ = dart.privateName(profile, "Profile.name");
+  var surname$ = dart.privateName(profile, "Profile.surname");
+  var cpf$ = dart.privateName(profile, "Profile.cpf");
+  var email$ = dart.privateName(profile, "Profile.email");
+  var phone$ = dart.privateName(profile, "Profile.phone");
+  var username$ = dart.privateName(profile, "Profile.username");
+  var password$ = dart.privateName(profile, "Profile.password");
+  var address$ = dart.privateName(profile, "Profile.address");
+  var number$ = dart.privateName(profile, "Profile.number");
+  var address_complement$ = dart.privateName(profile, "Profile.address_complement");
+  var uf$ = dart.privateName(profile, "Profile.uf");
+  var zip_code$ = dart.privateName(profile, "Profile.zip_code");
   profile.Profile = class Profile extends framework.StatelessWidget {
-    get nome() {
-      return this[nome$0];
+    get name() {
+      return this[name$];
     }
-    set nome(value) {
-      this[nome$0] = value;
+    set name(value) {
+      this[name$] = value;
+    }
+    get surname() {
+      return this[surname$];
+    }
+    set surname(value) {
+      this[surname$] = value;
+    }
+    get cpf() {
+      return this[cpf$];
+    }
+    set cpf(value) {
+      this[cpf$] = value;
     }
     get email() {
-      return this[email$0];
+      return this[email$];
     }
     set email(value) {
-      this[email$0] = value;
+      this[email$] = value;
     }
-    get endereco() {
-      return this[endereco$0];
+    get phone() {
+      return this[phone$];
     }
-    set endereco(value) {
-      this[endereco$0] = value;
+    set phone(value) {
+      this[phone$] = value;
     }
-    get numero() {
-      return this[numero$0];
+    get username() {
+      return this[username$];
     }
-    set numero(value) {
-      this[numero$0] = value;
+    set username(value) {
+      this[username$] = value;
     }
-    get complemento() {
-      return this[complemento$0];
+    get password() {
+      return this[password$];
     }
-    set complemento(value) {
-      this[complemento$0] = value;
+    set password(value) {
+      this[password$] = value;
+    }
+    get address() {
+      return this[address$];
+    }
+    set address(value) {
+      this[address$] = value;
+    }
+    get number() {
+      return this[number$];
+    }
+    set number(value) {
+      this[number$] = value;
+    }
+    get address_complement() {
+      return this[address_complement$];
+    }
+    set address_complement(value) {
+      this[address_complement$] = value;
     }
     get uf() {
-      return this[uf$0];
+      return this[uf$];
     }
     set uf(value) {
-      this[uf$0] = value;
+      this[uf$] = value;
     }
-    get cep() {
-      return this[cep$0];
+    get zip_code() {
+      return this[zip_code$];
     }
-    set cep(value) {
-      this[cep$0] = value;
+    set zip_code(value) {
+      this[zip_code$] = value;
     }
     static ['_#new#tearOff'](opts) {
-      let nome = opts && 'nome' in opts ? opts.nome : null;
+      let name = opts && 'name' in opts ? opts.name : null;
+      let surname = opts && 'surname' in opts ? opts.surname : null;
+      let cpf = opts && 'cpf' in opts ? opts.cpf : null;
       let email = opts && 'email' in opts ? opts.email : null;
-      let endereco = opts && 'endereco' in opts ? opts.endereco : null;
-      let numero = opts && 'numero' in opts ? opts.numero : null;
-      let complemento = opts && 'complemento' in opts ? opts.complemento : null;
+      let phone = opts && 'phone' in opts ? opts.phone : null;
+      let username = opts && 'username' in opts ? opts.username : null;
+      let password = opts && 'password' in opts ? opts.password : null;
+      let address = opts && 'address' in opts ? opts.address : null;
+      let number = opts && 'number' in opts ? opts.number : null;
+      let address_complement = opts && 'address_complement' in opts ? opts.address_complement : null;
       let uf = opts && 'uf' in opts ? opts.uf : null;
-      let cep = opts && 'cep' in opts ? opts.cep : null;
-      return new profile.Profile.new({nome: nome, email: email, endereco: endereco, numero: numero, complemento: complemento, uf: uf, cep: cep});
+      let zip_code = opts && 'zip_code' in opts ? opts.zip_code : null;
+      return new profile.Profile.new({name: name, surname: surname, cpf: cpf, email: email, phone: phone, username: username, password: password, address: address, number: number, address_complement: address_complement, uf: uf, zip_code: zip_code});
     }
     build(context) {
-      return new scaffold.Scaffold.new({body: new basic.Center.new({child: new basic.Column.new({mainAxisAlignment: flex.MainAxisAlignment.center, crossAxisAlignment: flex.CrossAxisAlignment.start, children: T.JSArrayOfWidget().of([new text.Text.new("Olá " + this.nome + "!", {style: new text_style.TextStyle.new({fontSize: 20, fontWeight: ui.FontWeight.bold, color: colors.Colors.pink})}), C[4] || CT.C4, new text.Text.new("E-mail: " + this.email), C[3] || CT.C3, new text.Text.new("Endereço: " + this.endereco), C[3] || CT.C3, new text.Text.new("Número: " + this.numero), C[3] || CT.C3, new text.Text.new("Complemento: " + this.complemento), C[3] || CT.C3, new text.Text.new("UF: " + this.uf), C[3] || CT.C3, new text.Text.new("CEP: " + this.cep), C[3] || CT.C3])})})});
+      return new scaffold.Scaffold.new({appBar: new app_bar.AppBar.new({title: new text.Text.new("Olá " + this.name + "!")}), body: new basic.Center.new({child: new basic.Column.new({mainAxisAlignment: flex.MainAxisAlignment.center, crossAxisAlignment: flex.CrossAxisAlignment.start, children: T.JSArrayOfWidget().of([new text.Text.new("Nome completo: " + this.name + " " + this.surname), C[3] || CT.C3, new text.Text.new("CPF: " + this.cpf), C[3] || CT.C3, new text.Text.new("E-mail: " + this.email), C[3] || CT.C3, new text.Text.new("Celular: " + this.phone), C[3] || CT.C3, new text.Text.new("Nome de usuário: " + this.username), C[3] || CT.C3, new text.Text.new("Senha: " + this.password), C[3] || CT.C3, new text.Text.new("Endereço: " + this.address), C[3] || CT.C3, new text.Text.new("Número: " + this.number), C[3] || CT.C3, new text.Text.new("Complemento: " + this.address_complement), C[3] || CT.C3, new text.Text.new("UF: " + this.uf), C[3] || CT.C3, new text.Text.new("CEP: " + this.zip_code), C[3] || CT.C3])})})});
     }
   };
   (profile.Profile.new = function(opts) {
-    let nome = opts && 'nome' in opts ? opts.nome : null;
+    let name = opts && 'name' in opts ? opts.name : null;
+    let surname = opts && 'surname' in opts ? opts.surname : null;
+    let cpf = opts && 'cpf' in opts ? opts.cpf : null;
     let email = opts && 'email' in opts ? opts.email : null;
-    let endereco = opts && 'endereco' in opts ? opts.endereco : null;
-    let numero = opts && 'numero' in opts ? opts.numero : null;
-    let complemento = opts && 'complemento' in opts ? opts.complemento : null;
+    let phone = opts && 'phone' in opts ? opts.phone : null;
+    let username = opts && 'username' in opts ? opts.username : null;
+    let password = opts && 'password' in opts ? opts.password : null;
+    let address = opts && 'address' in opts ? opts.address : null;
+    let number = opts && 'number' in opts ? opts.number : null;
+    let address_complement = opts && 'address_complement' in opts ? opts.address_complement : null;
     let uf = opts && 'uf' in opts ? opts.uf : null;
-    let cep = opts && 'cep' in opts ? opts.cep : null;
-    this[nome$0] = nome;
-    this[email$0] = email;
-    this[endereco$0] = endereco;
-    this[numero$0] = numero;
-    this[complemento$0] = complemento;
-    this[uf$0] = uf;
-    this[cep$0] = cep;
+    let zip_code = opts && 'zip_code' in opts ? opts.zip_code : null;
+    this[name$] = name;
+    this[surname$] = surname;
+    this[cpf$] = cpf;
+    this[email$] = email;
+    this[phone$] = phone;
+    this[username$] = username;
+    this[password$] = password;
+    this[address$] = address;
+    this[number$] = number;
+    this[address_complement$] = address_complement;
+    this[uf$] = uf;
+    this[zip_code$] = zip_code;
     profile.Profile.__proto__.new.call(this);
     ;
   }).prototype = profile.Profile.prototype;
@@ -602,13 +777,529 @@ define('zapp_user_main', ['dart_sdk', 'flutter_sdk'], (function load__zapp_user_
   dart.setLibraryUri(profile.Profile, I[3]);
   dart.setFieldSignature(profile.Profile, () => ({
     __proto__: dart.getFields(profile.Profile.__proto__),
-    nome: dart.fieldType(core.String),
+    name: dart.fieldType(core.String),
+    surname: dart.fieldType(core.String),
+    cpf: dart.fieldType(core.String),
     email: dart.fieldType(core.String),
-    endereco: dart.fieldType(core.String),
-    numero: dart.fieldType(core.String),
-    complemento: dart.fieldType(core.String),
+    phone: dart.fieldType(core.String),
+    username: dart.fieldType(core.String),
+    password: dart.fieldType(core.String),
+    address: dart.fieldType(core.String),
+    number: dart.fieldType(core.String),
+    address_complement: dart.fieldType(core.String),
     uf: dart.fieldType(core.String),
-    cep: dart.fieldType(core.String)
+    zip_code: dart.fieldType(core.String)
+  }));
+  var _name = dart.privateName(core, "_name");
+  var _enumToString = dart.privateName(core, "_enumToString");
+  var _Enum__name = dart.privateName(core, "_Enum._name");
+  var _Enum_index = dart.privateName(core, "_Enum.index");
+  mask_text_input_formatter.MaskAutoCompletionType = class MaskAutoCompletionType extends core._Enum {
+    [_enumToString]() {
+      return "MaskAutoCompletionType." + this[_name];
+    }
+  };
+  (mask_text_input_formatter.MaskAutoCompletionType.new = function(index, name) {
+    mask_text_input_formatter.MaskAutoCompletionType.__proto__.new.call(this, index, name);
+    ;
+  }).prototype = mask_text_input_formatter.MaskAutoCompletionType.prototype;
+  dart.addTypeTests(mask_text_input_formatter.MaskAutoCompletionType);
+  dart.addTypeCaches(mask_text_input_formatter.MaskAutoCompletionType);
+  dart.setMethodSignature(mask_text_input_formatter.MaskAutoCompletionType, () => ({
+    __proto__: dart.getMethods(mask_text_input_formatter.MaskAutoCompletionType.__proto__),
+    [_enumToString]: dart.fnType(core.String, [])
+  }));
+  dart.setLibraryUri(mask_text_input_formatter.MaskAutoCompletionType, I[4]);
+  dart.setStaticFieldSignature(mask_text_input_formatter.MaskAutoCompletionType, () => ['values', 'lazy', 'eager']);
+  dart.defineLazy(mask_text_input_formatter.MaskAutoCompletionType, {
+    /*mask_text_input_formatter.MaskAutoCompletionType.values*/get values() {
+      return C[9] || CT.C9;
+    },
+    /*mask_text_input_formatter.MaskAutoCompletionType.lazy*/get lazy() {
+      return C[10] || CT.C10;
+    },
+    /*mask_text_input_formatter.MaskAutoCompletionType.eager*/get eager() {
+      return C[11] || CT.C11;
+    }
+  }, false);
+  var type$ = dart.privateName(mask_text_input_formatter, "MaskTextInputFormatter.type");
+  var _mask = dart.privateName(mask_text_input_formatter, "_mask");
+  var _maskChars = dart.privateName(mask_text_input_formatter, "_maskChars");
+  var _maskFilter = dart.privateName(mask_text_input_formatter, "_maskFilter");
+  var _maskLength = dart.privateName(mask_text_input_formatter, "_maskLength");
+  var _resultTextArray = dart.privateName(mask_text_input_formatter, "_resultTextArray");
+  var _resultTextMasked = dart.privateName(mask_text_input_formatter, "_resultTextMasked");
+  var _updateFilter = dart.privateName(mask_text_input_formatter, "_updateFilter");
+  var _calcMaskLength = dart.privateName(mask_text_input_formatter, "_calcMaskLength");
+  var _symbolArray = dart.privateName(mask_text_input_formatter, "_symbolArray");
+  mask_text_input_formatter.MaskTextInputFormatter = class MaskTextInputFormatter extends core.Object {
+    get type() {
+      return this[type$];
+    }
+    set type(value) {
+      super.type = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let mask = opts && 'mask' in opts ? opts.mask : null;
+      let filter = opts && 'filter' in opts ? opts.filter : null;
+      let initialText = opts && 'initialText' in opts ? opts.initialText : null;
+      let type = opts && 'type' in opts ? opts.type : C[10] || CT.C10;
+      return new mask_text_input_formatter.MaskTextInputFormatter.new({mask: mask, filter: filter, initialText: initialText, type: type});
+    }
+    updateMask(opts) {
+      let mask = opts && 'mask' in opts ? opts.mask : null;
+      let filter = opts && 'filter' in opts ? opts.filter : null;
+      this[_mask] = mask;
+      if (filter != null) {
+        this[_updateFilter](filter);
+      }
+      this[_calcMaskLength]();
+      let unmaskedText = this.getUnmaskedText();
+      this.clear();
+      return this.formatEditUpdate(text_input.TextEditingValue.empty, new text_input.TextEditingValue.new({text: unmaskedText, selection: new text_editing.TextSelection.collapsed({offset: unmaskedText.length})}));
+    }
+    getMask() {
+      return this[_mask];
+    }
+    getMaskedText() {
+      return this[_resultTextMasked];
+    }
+    getUnmaskedText() {
+      return this[_resultTextArray].toString();
+    }
+    isFill() {
+      return this[_resultTextArray].length === this[_maskLength];
+    }
+    clear() {
+      this[_resultTextMasked] = "";
+      this[_resultTextArray].clear();
+    }
+    maskText(text) {
+      return new mask_text_input_formatter.MaskTextInputFormatter.new({mask: this[_mask], filter: this[_maskFilter], initialText: text}).getMaskedText();
+    }
+    unmaskText(text) {
+      return new mask_text_input_formatter.MaskTextInputFormatter.new({mask: this[_mask], filter: this[_maskFilter], initialText: text}).getUnmaskedText();
+    }
+    formatEditUpdate(oldValue, newValue) {
+      let t3, t2, t2$;
+      let mask = this[_mask];
+      if (mask == null || mask[$isEmpty] === true) {
+        this[_resultTextMasked] = newValue.text;
+        this[_resultTextArray].set(newValue.text);
+        return newValue;
+      }
+      if (oldValue.text[$isEmpty]) {
+        this[_resultTextArray].clear();
+      }
+      let beforeText = oldValue.text;
+      let afterText = newValue.text;
+      let beforeSelection = oldValue.selection;
+      let afterSelection = newValue.selection;
+      let beforeSelectionStart = afterSelection.isValid ? beforeSelection.isValid ? beforeSelection.start : 0 : 0;
+      for (let i = 0; i < beforeSelectionStart && i < beforeText.length && i < afterText.length; i = i + 1) {
+        if (beforeText[$_get](i) !== afterText[$_get](i)) {
+          beforeSelectionStart = i;
+          break;
+        }
+      }
+      let beforeSelectionLength = afterSelection.isValid ? beforeSelection.isValid ? beforeSelection.end - beforeSelectionStart : 0 : oldValue.text.length;
+      let lengthDifference = afterText.length - (beforeText.length - beforeSelectionLength);
+      let lengthRemoved = lengthDifference < 0 ? lengthDifference[$abs]() : 0;
+      let lengthAdded = lengthDifference > 0 ? lengthDifference : 0;
+      let afterChangeStart = math.max(core.int, 0, beforeSelectionStart - lengthRemoved);
+      let afterChangeEnd = math.max(core.int, 0, afterChangeStart + lengthAdded);
+      let beforeReplaceStart = math.max(core.int, 0, beforeSelectionStart - lengthRemoved);
+      let beforeReplaceLength = beforeSelectionLength + lengthRemoved;
+      let beforeResultTextLength = this[_resultTextArray].length;
+      let currentResultTextLength = this[_resultTextArray].length;
+      let currentResultSelectionStart = 0;
+      let currentResultSelectionLength = 0;
+      for (let i = 0; i < math.min(core.num, beforeReplaceStart + beforeReplaceLength, mask.length); i = i + 1) {
+        if (this[_maskChars][$contains](mask[$_get](i)) && currentResultTextLength > 0) {
+          currentResultTextLength = currentResultTextLength - 1;
+          if (i < beforeReplaceStart) {
+            currentResultSelectionStart = currentResultSelectionStart + 1;
+          }
+          if (i >= beforeReplaceStart) {
+            currentResultSelectionLength = currentResultSelectionLength + 1;
+          }
+        }
+      }
+      let replacementText = afterText[$substring](afterChangeStart, afterChangeEnd);
+      let targetCursorPosition = currentResultSelectionStart;
+      if (replacementText[$isEmpty]) {
+        this[_resultTextArray].removeRange(currentResultSelectionStart, currentResultSelectionStart + currentResultSelectionLength);
+      } else {
+        if (currentResultSelectionLength > 0) {
+          this[_resultTextArray].removeRange(currentResultSelectionStart, currentResultSelectionStart + currentResultSelectionLength);
+          currentResultSelectionLength = 0;
+        }
+        this[_resultTextArray].insert(currentResultSelectionStart, replacementText);
+        targetCursorPosition = targetCursorPosition + replacementText.length;
+      }
+      if (beforeResultTextLength === 0 && this[_resultTextArray].length > 1) {
+        for (let i = 0; i < mask.length; i = i + 1) {
+          if (this[_maskChars][$contains](mask[$_get](i))) {
+            let resultPrefix = this[_resultTextArray][_symbolArray][$take](i)[$toList]();
+            for (let j = 0; j < resultPrefix[$length]; j = j + 1) {
+              if (this[_resultTextArray].length <= j || mask[$_get](j) !== resultPrefix[$_get](j) || mask[$_get](j) === resultPrefix[$_get](j) && j === resultPrefix[$length] - 1) {
+                this[_resultTextArray].removeRange(0, j);
+                break;
+              }
+            }
+            break;
+          }
+        }
+      }
+      let curTextPos = 0;
+      let maskPos = 0;
+      this[_resultTextMasked] = "";
+      let cursorPos = -1;
+      let nonMaskedCount = 0;
+      while (maskPos < mask.length) {
+        let curMaskChar = mask[$_get](maskPos);
+        let isMaskChar = this[_maskChars][$contains](curMaskChar);
+        let curTextInRange = curTextPos < this[_resultTextArray].length;
+        let curTextChar = null;
+        if (isMaskChar && curTextInRange) {
+          while (curTextChar == null && curTextInRange) {
+            let potentialTextChar = this[_resultTextArray]._get(curTextPos);
+            if (dart.test((t2$ = (t2 = this[_maskFilter], t2 == null ? null : (t3 = t2[$_get](curMaskChar), t3 == null ? null : t3.hasMatch(potentialTextChar))), t2$ == null ? false : t2$))) {
+              curTextChar = potentialTextChar;
+            } else {
+              this[_resultTextArray].removeAt(curTextPos);
+              curTextInRange = curTextPos < this[_resultTextArray].length;
+              if (curTextPos <= targetCursorPosition) {
+                targetCursorPosition = targetCursorPosition - 1;
+              }
+            }
+          }
+        } else if (!isMaskChar && !curTextInRange && this.type === mask_text_input_formatter.MaskAutoCompletionType.eager) {
+          curTextInRange = true;
+        }
+        if (isMaskChar && curTextInRange && curTextChar != null) {
+          this[_resultTextMasked] = this[_resultTextMasked] + dart.notNull(curTextChar);
+          if (curTextPos === targetCursorPosition && cursorPos === -1) {
+            cursorPos = maskPos - nonMaskedCount;
+          }
+          nonMaskedCount = 0;
+          curTextPos = curTextPos + 1;
+        } else {
+          if (curTextPos === targetCursorPosition && cursorPos === -1 && !curTextInRange) {
+            cursorPos = maskPos;
+          }
+          if (!curTextInRange) {
+            break;
+          } else {
+            this[_resultTextMasked] = this[_resultTextMasked] + mask[$_get](maskPos);
+          }
+          if (this.type === mask_text_input_formatter.MaskAutoCompletionType.lazy || lengthRemoved > 0 || currentResultSelectionLength > 0) {
+            nonMaskedCount = nonMaskedCount + 1;
+          }
+        }
+        maskPos = maskPos + 1;
+      }
+      if (nonMaskedCount > 0) {
+        this[_resultTextMasked] = this[_resultTextMasked][$substring](0, this[_resultTextMasked].length - nonMaskedCount);
+        cursorPos = cursorPos - nonMaskedCount;
+      }
+      if (this[_resultTextArray].length > this[_maskLength]) {
+        this[_resultTextArray].removeRange(this[_maskLength], this[_resultTextArray].length);
+      }
+      let finalCursorPosition = cursorPos < 0 ? this[_resultTextMasked].length : cursorPos;
+      return new text_input.TextEditingValue.new({text: this[_resultTextMasked], selection: new text_editing.TextSelection.new({baseOffset: finalCursorPosition, extentOffset: finalCursorPosition, affinity: newValue.selection.affinity, isDirectional: newValue.selection.isDirectional})});
+    }
+    [_calcMaskLength]() {
+      this[_maskLength] = 0;
+      let mask = this[_mask];
+      if (mask != null) {
+        for (let i = 0; i < mask.length; i = i + 1) {
+          if (this[_maskChars][$contains](mask[$_get](i))) {
+            this[_maskLength] = this[_maskLength] + 1;
+          }
+        }
+      }
+    }
+    [_updateFilter](filter) {
+      let t2, t2$;
+      this[_maskFilter] = filter;
+      this[_maskChars] = (t2$ = (t2 = this[_maskFilter], t2 == null ? null : t2[$keys][$toList]({growable: false})), t2$ == null ? T.JSArrayOfString().of([]) : t2$);
+    }
+  };
+  (mask_text_input_formatter.MaskTextInputFormatter.new = function(opts) {
+    let t2;
+    let mask = opts && 'mask' in opts ? opts.mask : null;
+    let filter = opts && 'filter' in opts ? opts.filter : null;
+    let initialText = opts && 'initialText' in opts ? opts.initialText : null;
+    let type = opts && 'type' in opts ? opts.type : C[10] || CT.C10;
+    this[_mask] = null;
+    this[_maskChars] = T.JSArrayOfString().of([]);
+    this[_maskFilter] = null;
+    this[_maskLength] = 0;
+    this[_resultTextArray] = new mask_text_input_formatter._TextMatcher.new();
+    this[_resultTextMasked] = "";
+    this[type$] = type;
+    this.updateMask({mask: mask, filter: (t2 = filter, t2 == null ? new (T.IdentityMapOfString$RegExp()).from(["#", core.RegExp.new("[0-9]"), "A", core.RegExp.new("[^0-9]")]) : t2)});
+    if (initialText != null) {
+      this.formatEditUpdate(text_input.TextEditingValue.empty, new text_input.TextEditingValue.new({text: initialText}));
+    }
+  }).prototype = mask_text_input_formatter.MaskTextInputFormatter.prototype;
+  dart.addTypeTests(mask_text_input_formatter.MaskTextInputFormatter);
+  dart.addTypeCaches(mask_text_input_formatter.MaskTextInputFormatter);
+  mask_text_input_formatter.MaskTextInputFormatter[dart.implements] = () => [text_formatter.TextInputFormatter];
+  dart.setMethodSignature(mask_text_input_formatter.MaskTextInputFormatter, () => ({
+    __proto__: dart.getMethods(mask_text_input_formatter.MaskTextInputFormatter.__proto__),
+    updateMask: dart.fnType(text_input.TextEditingValue, [], {filter: dart.nullable(core.Map$(core.String, core.RegExp)), mask: dart.nullable(core.String)}, {}),
+    getMask: dart.fnType(dart.nullable(core.String), []),
+    getMaskedText: dart.fnType(core.String, []),
+    getUnmaskedText: dart.fnType(core.String, []),
+    isFill: dart.fnType(core.bool, []),
+    clear: dart.fnType(dart.void, []),
+    maskText: dart.fnType(core.String, [core.String]),
+    unmaskText: dart.fnType(core.String, [core.String]),
+    formatEditUpdate: dart.fnType(text_input.TextEditingValue, [text_input.TextEditingValue, text_input.TextEditingValue]),
+    [_calcMaskLength]: dart.fnType(dart.void, []),
+    [_updateFilter]: dart.fnType(dart.void, [core.Map$(core.String, core.RegExp)])
+  }));
+  dart.setLibraryUri(mask_text_input_formatter.MaskTextInputFormatter, I[4]);
+  dart.setFieldSignature(mask_text_input_formatter.MaskTextInputFormatter, () => ({
+    __proto__: dart.getFields(mask_text_input_formatter.MaskTextInputFormatter.__proto__),
+    type: dart.finalFieldType(mask_text_input_formatter.MaskAutoCompletionType),
+    [_mask]: dart.fieldType(dart.nullable(core.String)),
+    [_maskChars]: dart.fieldType(core.List$(core.String)),
+    [_maskFilter]: dart.fieldType(dart.nullable(core.Map$(core.String, core.RegExp))),
+    [_maskLength]: dart.fieldType(core.int),
+    [_resultTextArray]: dart.finalFieldType(mask_text_input_formatter._TextMatcher),
+    [_resultTextMasked]: dart.fieldType(core.String)
+  }));
+  mask_text_input_formatter._TextMatcher = class _TextMatcher extends core.Object {
+    get length() {
+      return this[_symbolArray][$fold](core.int, 0, dart.fn((prev, match) => prev + match.length, T.intAndStringToint()));
+    }
+    removeRange(start, end) {
+      return this[_symbolArray][$removeRange](start, end);
+    }
+    insert(start, substring) {
+      for (let i = 0; i < substring.length; i = i + 1) {
+        this[_symbolArray][$insert](start + i, substring[$_get](i));
+      }
+    }
+    get isEmpty() {
+      return this[_symbolArray][$isEmpty];
+    }
+    removeAt(index) {
+      return this[_symbolArray][$removeAt](index);
+    }
+    _get(index) {
+      return this[_symbolArray][$_get](index);
+    }
+    clear() {
+      return this[_symbolArray][$clear]();
+    }
+    toString() {
+      return this[_symbolArray][$join]();
+    }
+    set(text) {
+      this[_symbolArray][$clear]();
+      for (let i = 0; i < text.length; i = i + 1) {
+        this[_symbolArray][$add](text[$_get](i));
+      }
+    }
+    static ['_#new#tearOff']() {
+      return new mask_text_input_formatter._TextMatcher.new();
+    }
+  };
+  (mask_text_input_formatter._TextMatcher.new = function() {
+    this[_symbolArray] = T.JSArrayOfString().of([]);
+    ;
+  }).prototype = mask_text_input_formatter._TextMatcher.prototype;
+  dart.addTypeTests(mask_text_input_formatter._TextMatcher);
+  dart.addTypeCaches(mask_text_input_formatter._TextMatcher);
+  dart.setMethodSignature(mask_text_input_formatter._TextMatcher, () => ({
+    __proto__: dart.getMethods(mask_text_input_formatter._TextMatcher.__proto__),
+    removeRange: dart.fnType(dart.void, [core.int, core.int]),
+    insert: dart.fnType(dart.void, [core.int, core.String]),
+    removeAt: dart.fnType(dart.void, [core.int]),
+    _get: dart.fnType(core.String, [core.int]),
+    clear: dart.fnType(dart.void, []),
+    set: dart.fnType(dart.void, [core.String])
+  }));
+  dart.setGetterSignature(mask_text_input_formatter._TextMatcher, () => ({
+    __proto__: dart.getGetters(mask_text_input_formatter._TextMatcher.__proto__),
+    length: core.int,
+    isEmpty: core.bool
+  }));
+  dart.setLibraryUri(mask_text_input_formatter._TextMatcher, I[4]);
+  dart.setFieldSignature(mask_text_input_formatter._TextMatcher, () => ({
+    __proto__: dart.getFields(mask_text_input_formatter._TextMatcher.__proto__),
+    [_symbolArray]: dart.finalFieldType(core.List$(core.String))
+  }));
+  dart.defineExtensionMethods(mask_text_input_formatter._TextMatcher, ['toString']);
+  var name$0 = dart.privateName(user_model, "UserModel.name");
+  var surname$0 = dart.privateName(user_model, "UserModel.surname");
+  var cpf$0 = dart.privateName(user_model, "UserModel.cpf");
+  var email$0 = dart.privateName(user_model, "UserModel.email");
+  var phone$0 = dart.privateName(user_model, "UserModel.phone");
+  var username$0 = dart.privateName(user_model, "UserModel.username");
+  var password$0 = dart.privateName(user_model, "UserModel.password");
+  var address$0 = dart.privateName(user_model, "UserModel.address");
+  var number$0 = dart.privateName(user_model, "UserModel.number");
+  var address_complement$0 = dart.privateName(user_model, "UserModel.address_complement");
+  var uf$0 = dart.privateName(user_model, "UserModel.uf");
+  var zip_code$0 = dart.privateName(user_model, "UserModel.zip_code");
+  user_model.UserModel = class UserModel extends core.Object {
+    get name() {
+      return this[name$0];
+    }
+    set name(value) {
+      super.name = value;
+    }
+    get surname() {
+      return this[surname$0];
+    }
+    set surname(value) {
+      super.surname = value;
+    }
+    get cpf() {
+      return this[cpf$0];
+    }
+    set cpf(value) {
+      super.cpf = value;
+    }
+    get email() {
+      return this[email$0];
+    }
+    set email(value) {
+      super.email = value;
+    }
+    get phone() {
+      return this[phone$0];
+    }
+    set phone(value) {
+      super.phone = value;
+    }
+    get username() {
+      return this[username$0];
+    }
+    set username(value) {
+      super.username = value;
+    }
+    get password() {
+      return this[password$0];
+    }
+    set password(value) {
+      super.password = value;
+    }
+    get address() {
+      return this[address$0];
+    }
+    set address(value) {
+      super.address = value;
+    }
+    get number() {
+      return this[number$0];
+    }
+    set number(value) {
+      super.number = value;
+    }
+    get address_complement() {
+      return this[address_complement$0];
+    }
+    set address_complement(value) {
+      super.address_complement = value;
+    }
+    get uf() {
+      return this[uf$0];
+    }
+    set uf(value) {
+      super.uf = value;
+    }
+    get zip_code() {
+      return this[zip_code$0];
+    }
+    set zip_code(value) {
+      super.zip_code = value;
+    }
+    static ['_#new#tearOff'](opts) {
+      let name = opts && 'name' in opts ? opts.name : "";
+      let surname = opts && 'surname' in opts ? opts.surname : "";
+      let cpf = opts && 'cpf' in opts ? opts.cpf : "";
+      let email = opts && 'email' in opts ? opts.email : "";
+      let phone = opts && 'phone' in opts ? opts.phone : "";
+      let username = opts && 'username' in opts ? opts.username : "";
+      let password = opts && 'password' in opts ? opts.password : "";
+      let address = opts && 'address' in opts ? opts.address : "";
+      let number = opts && 'number' in opts ? opts.number : "";
+      let address_complement = opts && 'address_complement' in opts ? opts.address_complement : "";
+      let uf = opts && 'uf' in opts ? opts.uf : "";
+      let zip_code = opts && 'zip_code' in opts ? opts.zip_code : "";
+      return new user_model.UserModel.new({name: name, surname: surname, cpf: cpf, email: email, phone: phone, username: username, password: password, address: address, number: number, address_complement: address_complement, uf: uf, zip_code: zip_code});
+    }
+    copyWith(opts) {
+      let t2, t2$, t2$0, t2$1, t2$2, t2$3, t2$4, t2$5, t2$6, t2$7, t2$8, t2$9;
+      let name = opts && 'name' in opts ? opts.name : null;
+      let surname = opts && 'surname' in opts ? opts.surname : null;
+      let cpf = opts && 'cpf' in opts ? opts.cpf : null;
+      let email = opts && 'email' in opts ? opts.email : null;
+      let phone = opts && 'phone' in opts ? opts.phone : null;
+      let username = opts && 'username' in opts ? opts.username : null;
+      let password = opts && 'password' in opts ? opts.password : null;
+      let address = opts && 'address' in opts ? opts.address : null;
+      let number = opts && 'number' in opts ? opts.number : null;
+      let address_complement = opts && 'address_complement' in opts ? opts.address_complement : null;
+      let uf = opts && 'uf' in opts ? opts.uf : null;
+      let zip_code = opts && 'zip_code' in opts ? opts.zip_code : null;
+      return new user_model.UserModel.new({name: (t2 = name, t2 == null ? this.name : t2), surname: (t2$ = surname, t2$ == null ? this.surname : t2$), cpf: (t2$0 = cpf, t2$0 == null ? this.cpf : t2$0), email: (t2$1 = email, t2$1 == null ? this.email : t2$1), phone: (t2$2 = phone, t2$2 == null ? this.phone : t2$2), username: (t2$3 = username, t2$3 == null ? this.username : t2$3), password: (t2$4 = password, t2$4 == null ? this.password : t2$4), address: (t2$5 = address, t2$5 == null ? this.address : t2$5), number: (t2$6 = number, t2$6 == null ? this.number : t2$6), address_complement: (t2$7 = address_complement, t2$7 == null ? this.address_complement : t2$7), uf: (t2$8 = uf, t2$8 == null ? this.uf : t2$8), zip_code: (t2$9 = zip_code, t2$9 == null ? this.zip_code : t2$9)});
+    }
+  };
+  (user_model.UserModel.new = function(opts) {
+    let name = opts && 'name' in opts ? opts.name : "";
+    let surname = opts && 'surname' in opts ? opts.surname : "";
+    let cpf = opts && 'cpf' in opts ? opts.cpf : "";
+    let email = opts && 'email' in opts ? opts.email : "";
+    let phone = opts && 'phone' in opts ? opts.phone : "";
+    let username = opts && 'username' in opts ? opts.username : "";
+    let password = opts && 'password' in opts ? opts.password : "";
+    let address = opts && 'address' in opts ? opts.address : "";
+    let number = opts && 'number' in opts ? opts.number : "";
+    let address_complement = opts && 'address_complement' in opts ? opts.address_complement : "";
+    let uf = opts && 'uf' in opts ? opts.uf : "";
+    let zip_code = opts && 'zip_code' in opts ? opts.zip_code : "";
+    this[name$0] = name;
+    this[surname$0] = surname;
+    this[cpf$0] = cpf;
+    this[email$0] = email;
+    this[phone$0] = phone;
+    this[username$0] = username;
+    this[password$0] = password;
+    this[address$0] = address;
+    this[number$0] = number;
+    this[address_complement$0] = address_complement;
+    this[uf$0] = uf;
+    this[zip_code$0] = zip_code;
+    ;
+  }).prototype = user_model.UserModel.prototype;
+  dart.addTypeTests(user_model.UserModel);
+  dart.addTypeCaches(user_model.UserModel);
+  dart.setMethodSignature(user_model.UserModel, () => ({
+    __proto__: dart.getMethods(user_model.UserModel.__proto__),
+    copyWith: dart.fnType(user_model.UserModel, [], {address: dart.nullable(core.String), address_complement: dart.nullable(core.String), cpf: dart.nullable(core.String), email: dart.nullable(core.String), name: dart.nullable(core.String), number: dart.nullable(core.String), password: dart.nullable(core.String), phone: dart.nullable(core.String), surname: dart.nullable(core.String), uf: dart.nullable(core.String), username: dart.nullable(core.String), zip_code: dart.nullable(core.String)}, {})
+  }));
+  dart.setLibraryUri(user_model.UserModel, I[5]);
+  dart.setFieldSignature(user_model.UserModel, () => ({
+    __proto__: dart.getFields(user_model.UserModel.__proto__),
+    name: dart.finalFieldType(core.String),
+    surname: dart.finalFieldType(core.String),
+    cpf: dart.finalFieldType(core.String),
+    email: dart.finalFieldType(core.String),
+    phone: dart.finalFieldType(core.String),
+    username: dart.finalFieldType(core.String),
+    password: dart.finalFieldType(core.String),
+    address: dart.finalFieldType(core.String),
+    number: dart.finalFieldType(core.String),
+    address_complement: dart.finalFieldType(core.String),
+    uf: dart.finalFieldType(core.String),
+    zip_code: dart.finalFieldType(core.String)
   }));
   validator.equals = function equals(str, comparison) {
     return str === dart.toString(comparison);
@@ -624,7 +1315,7 @@ define('zapp_user_main', ['dart_sdk', 'flutter_sdk'], (function load__zapp_user_
     return validator._email.hasMatch(str[$toLowerCase]());
   };
   validator.isURL = function isURL(input, options = null) {
-    let t0, t0$, t0$0, t0$1, t0$2, t0$3;
+    let t2, t2$, t2$0, t2$1, t2$2, t2$3;
     let str = input;
     if (str == null || str[$isEmpty] || str.length > 2083 || str[$indexOf]("mailto:") === 0) {
       return false;
@@ -648,19 +1339,19 @@ define('zapp_user_main', ['dart_sdk', 'flutter_sdk'], (function load__zapp_user_
     if (hash[$isNotEmpty] && core.RegExp.new("\\s").hasMatch(hash)) {
       return false;
     }
-    split = (t0$ = (t0 = str, t0 == null ? null : t0[$split]("?")), t0$ == null ? T.JSArrayOfString().of([]) : t0$);
+    split = (t2$ = (t2 = str, t2 == null ? null : t2[$split]("?")), t2$ == null ? T.JSArrayOfString().of([]) : t2$);
     str = helpers.shift(split);
     let query = split[$join]("?");
     if (query !== "" && core.RegExp.new("\\s").hasMatch(query)) {
       return false;
     }
-    split = (t0$1 = (t0$0 = str, t0$0 == null ? null : t0$0[$split]("/")), t0$1 == null ? T.JSArrayOfString().of([]) : t0$1);
+    split = (t2$1 = (t2$0 = str, t2$0 == null ? null : t2$0[$split]("/")), t2$1 == null ? T.JSArrayOfString().of([]) : t2$1);
     str = helpers.shift(split);
     let path = split[$join]("/");
     if (path !== "" && core.RegExp.new("\\s").hasMatch(path)) {
       return false;
     }
-    split = (t0$3 = (t0$2 = str, t0$2 == null ? null : t0$2[$split]("@")), t0$3 == null ? T.JSArrayOfString().of([]) : t0$3);
+    split = (t2$3 = (t2$2 = str, t2$2 == null ? null : t2$2[$split]("@")), t2$3 == null ? T.JSArrayOfString().of([]) : t2$3);
     if (split[$length] > 1) {
       let auth = helpers.shift(split);
       if (auth != null && auth[$contains](":")) {
@@ -691,7 +1382,7 @@ define('zapp_user_main', ['dart_sdk', 'flutter_sdk'], (function load__zapp_user_
     return true;
   };
   validator.isIP = function isIP(str, version = null) {
-    if (!(version == null || typeof version == 'string' || core.int.is(version))) dart.assertFailed(null, I[4], 189, 10, "version == null || version is String || version is int");
+    if (!(version == null || typeof version == 'string' || core.int.is(version))) dart.assertFailed(null, I[6], 189, 10, "version == null || version is String || version is int");
     version = dart.toString(version);
     if (version === "null") {
       return validator.isIP(str, 4) || validator.isIP(str, 6);
@@ -761,7 +1452,7 @@ define('zapp_user_main', ['dart_sdk', 'flutter_sdk'], (function load__zapp_user_
     return str === str[$toUpperCase]();
   };
   validator.isDivisibleBy = function isDivisibleBy(str, n) {
-    if (!(typeof n == 'string' || core.int.is(n))) dart.assertFailed(null, I[4], 291, 10, "n is String || n is int");
+    if (!(typeof n == 'string' || core.int.is(n))) dart.assertFailed(null, I[6], 291, 10, "n is String || n is int");
     let number = null;
     if (core.int.is(n)) {
       number = n;
@@ -1133,23 +1824,27 @@ define('zapp_user_main', ['dart_sdk', 'flutter_sdk'], (function load__zapp_user_
     "file:///zapp/project/lib/main.dart": main,
     "file:///zapp/project/.dart_tool/dartpad/web_plugin_registrant.dart": web_plugin_registrant,
     "package:flutter_app/screens/register.dart": register,
-    "package:flutter_app/components/customTextField.dart": customTextField,
+    "package:flutter_app/components/custom_text_field.dart": custom_text_field,
     "package:flutter_app/screens/profile.dart": profile,
     "package:string_validator/string_validator.dart": string_validator,
+    "package:mask_text_input_formatter/mask_text_input_formatter.dart": mask_text_input_formatter,
+    "package:flutter_app/models/user_model.dart": user_model,
     "package:string_validator/src/validator.dart": validator,
     "package:string_validator/src/sanitizer.dart": sanitizer,
     "package:string_validator/src/helpers.dart": helpers
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["/zapp/project/.zapp_entry.dart","/zapp/project/lib/main.dart","/zapp/project/.dart_tool/dartpad/web_plugin_registrant.dart","/zapp/project/lib/screens/register.dart","/zapp/project/lib/components/customTextField.dart","/zapp/project/lib/screens/profile.dart","/zapp/pub/.pub_cache/hosted/pub.dev/string_validator-1.0.0/lib/src/validator.dart","/zapp/pub/.pub_cache/hosted/pub.dev/string_validator-1.0.0/lib/src/sanitizer.dart","/zapp/pub/.pub_cache/hosted/pub.dev/string_validator-1.0.0/lib/src/helpers.dart"],"names":[],"mappings":"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","file":"main.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["/zapp/project/.zapp_entry.dart","/zapp/project/lib/main.dart","/zapp/project/.dart_tool/dartpad/web_plugin_registrant.dart","/zapp/project/lib/screens/register.dart","/zapp/project/lib/components/custom_text_field.dart","/zapp/project/lib/screens/profile.dart","/zapp/pub/.pub_cache/hosted/pub.dev/mask_text_input_formatter-2.4.0/lib/mask_text_input_formatter.dart","/zapp/project/lib/models/user_model.dart","/zapp/pub/.pub_cache/hosted/pub.dev/string_validator-1.0.0/lib/src/validator.dart","/zapp/pub/.pub_cache/hosted/pub.dev/string_validator-1.0.0/lib/src/sanitizer.dart","/zapp/pub/.pub_cache/hosted/pub.dev/string_validator-1.0.0/lib/src/helpers.dart"],"names":[],"mappings":"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","file":"main.js"}');
   // Exports:
   return {
     zapp__project__$46zapp_entry: $46zapp_entry,
     zapp__project__lib__main: main,
     zapp__project__$46dart_tool__dartpad__web_plugin_registrant: web_plugin_registrant,
     screens__register: register,
-    components__customTextField: customTextField,
+    components__custom_text_field: custom_text_field,
     screens__profile: profile,
     string_validator: string_validator,
+    mask_text_input_formatter: mask_text_input_formatter,
+    models__user_model: user_model,
     src__validator: validator,
     src__sanitizer: sanitizer,
     src__helpers: helpers
